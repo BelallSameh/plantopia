@@ -74,9 +74,10 @@ class _CareInfoScreenState extends State<CareInfo> {
     double cardTopPosition = 70.0;
     double cardBottomPosition = 40.0;
     double cardHeight = screenHeight - cardTopPosition - cardBottomPosition;
+
     return FutureBuilder<Plant?>(
       future:
-          Provider.of<PlantProvider>(context).fetchPlantById(widget.plantId),
+      Provider.of<PlantProvider>(context).fetchPlantById(widget.plantId),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Scaffold(
@@ -135,12 +136,8 @@ class _CareInfoScreenState extends State<CareInfo> {
             }
             info.maxDays = maxDays;
 
-            if (info.daysLeft == 0) {
-              info.daysLeft = maxDays;
-            }
-
             int daysDifference = DateTime.now().difference(lastUpdated).inDays;
-            info.daysLeft -= daysDifference;
+            info.daysLeft = maxDays - daysDifference;
           }
 
           return Scaffold(
@@ -223,7 +220,7 @@ class _CareInfoScreenState extends State<CareInfo> {
                                     width: 200,
                                     padding: EdgeInsets.all(20),
                                     margin:
-                                        EdgeInsets.symmetric(horizontal: 20),
+                                    EdgeInsets.symmetric(horizontal: 20),
                                     decoration: BoxDecoration(
                                       color: Color(0xFFDFE6D6),
                                       borderRadius: BorderRadius.circular(80),
@@ -253,7 +250,7 @@ class _CareInfoScreenState extends State<CareInfo> {
                                   Column(
                                     children: careInfoList
                                         .map((info) => buildCareInfoBlock(
-                                            info, selectedPlant))
+                                        info, selectedPlant))
                                         .toList(),
                                   ),
                                   SizedBox(height: 30),
@@ -267,7 +264,7 @@ class _CareInfoScreenState extends State<CareInfo> {
                   ),
                 ),
                 Positioned(
-                  top: cardTopPosition-45,
+                  top: cardTopPosition - 45,
                   right: -50,
                   child: JumpingLogo2(),
                 ),
@@ -301,40 +298,69 @@ class _CareInfoScreenState extends State<CareInfo> {
     final plantProvider = Provider.of<PlantProvider>(context, listen: false);
     DateTime now = DateTime.now();
 
-    // Update the specific care info variable based on the careInfoType
     switch (careInfoType) {
       case 'Next Watering':
-        plant.waterCounter = plant.waterCounter; // Update water counter if needed
-        plant.lastWatering = now; // Update last watering
+        plant.lastWatering = now;
         break;
       case 'Next Spraying':
-        plant.sprayCounter = plant.sprayCounter; // Update spray counter if needed
-        plant.lastSpraying = now; // Update last spraying
+        plant.lastSpraying = now;
         break;
       case 'Next Pruning':
-        plant.pruneCounter = plant.pruneCounter; // Update prune counter if needed
-        plant.lastPruning = now; // Update last pruning
+        plant.lastPruning = now;
         break;
       case 'Next Fertilizing':
-        plant.fertiliseCounter = plant.fertiliseCounter; // Update fertilize counter if needed
-        plant.lastFertilizing = now; // Update last fertilizing
+        plant.lastFertilizing = now;
         break;
       case 'Next Rotation':
-        plant.rotateCounter = plant.rotateCounter; // Update rotate counter if needed
-        plant.lastRotation = now; // Update last rotation
+        plant.lastRotation = now;
         break;
       case 'Next Cleaning':
-        plant.cleanCounter = plant.cleanCounter; // Update clean counter if needed
-        plant.lastCleaning = now; // Update last cleaning
-        break;
-      default:
+        plant.lastCleaning = now;
         break;
     }
 
-    // Update the changes in Firestore
     await plantProvider.updatePlant(plant);
-  }
 
+    setState(() {
+      for (var info in careInfoList) {
+        int maxDays;
+        DateTime lastUpdated;
+        switch (info.title) {
+          case 'Next Watering':
+            maxDays = plant.waterCounter;
+            lastUpdated = plant.lastWatering;
+            break;
+          case 'Next Spraying':
+            maxDays = plant.sprayCounter;
+            lastUpdated = plant.lastSpraying;
+            break;
+          case 'Next Pruning':
+            maxDays = plant.pruneCounter;
+            lastUpdated = plant.lastPruning;
+            break;
+          case 'Next Fertilizing':
+            maxDays = plant.fertiliseCounter;
+            lastUpdated = plant.lastFertilizing;
+            break;
+          case 'Next Rotation':
+            maxDays = plant.rotateCounter;
+            lastUpdated = plant.lastRotation;
+            break;
+          case 'Next Cleaning':
+            maxDays = plant.cleanCounter;
+            lastUpdated = plant.lastCleaning;
+            break;
+          default:
+            maxDays = 3;
+            lastUpdated = DateTime.now();
+        }
+        info.maxDays = maxDays;
+
+        int daysDifference = DateTime.now().difference(lastUpdated).inDays;
+        info.daysLeft = maxDays - daysDifference;
+      }
+    });
+  }
 
   Widget buildCareInfoBlock(CareInfoModel info, Plant plant) {
     double progress = info.daysLeft / info.maxDays;
@@ -343,22 +369,17 @@ class _CareInfoScreenState extends State<CareInfo> {
     Color progressColor;
 
     if (info.daysLeft == 0) {
-      visualProgress = 0.2;
+      visualProgress = 0;
       status = 'Today';
       progressColor = Color(0xFF76C736); // Green
+    } else if (info.daysLeft > 0) {
+      visualProgress = progress;
+      status = '${info.daysLeft} days left';
+      progressColor = Color(0xFF76C736); // Green
     } else {
-      if (progress > 0) {
-        visualProgress = 0.2 + (0.8 * progress);
-      } else {
-        visualProgress = 0.1 * progress.abs();
-      }
-      if (info.daysLeft < 0) {
-        status = '${info.daysLeft.abs()} days late';
-        progressColor = Color(0xFFC77336); // Red
-      } else {
-        status = '${info.daysLeft} days left';
-        progressColor = Color(0xFF76C736); // Green
-      }
+      visualProgress = 1.0;
+      status = '${info.daysLeft.abs()} days late';
+      progressColor = Color(0xFFC77336); // Red
     }
 
     return Padding(
@@ -386,7 +407,7 @@ class _CareInfoScreenState extends State<CareInfo> {
                       Text(
                         info.title,
                         style:
-                            TextStyle(fontSize: 16, color: Color(0xFF1C8D29)),
+                        TextStyle(fontSize: 16, color: Color(0xFF1C8D29)),
                       ),
                     ],
                   ),
@@ -434,9 +455,6 @@ class _CareInfoScreenState extends State<CareInfo> {
                     color: Colors.grey,
                   ),
                   onPressed: () {
-                    setState(() {
-                      info.daysLeft = info.maxDays;
-                    });
                     updateCareInfo(plant, info.title);
                   },
                 ),
@@ -448,4 +466,5 @@ class _CareInfoScreenState extends State<CareInfo> {
       ),
     );
   }
+
 }
