@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "41520065615",
+    "firebase_url": "https://plantopia-acced-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "plantopia-acced",
+    "storage_bucket": "plantopia-acced.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41520065615:android:7063a9b9c5b5a85dface3a",
+        "android_client_info": {
+          "package_name": "com.example.plantopia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41520065615-1ldg0bv44p8hhieea6f35icitk03biol.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.plantopia",
+            "certificate_hash": "6b98e8d01739b7ec6e4924807bc36b5e190c20dc"
+          }
+        },
+        {
+          "client_id": "41520065615-g09buddv9el6rduh52vp5linfkqecpb6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKLsXYG34vgXc4fcMe1Sa6dK4im0_D5ZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41520065615-dttmhkpkkqp2ea2ehqn085lqj5c4sb3m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "41520065615-f6u79cj6j6rlig5k90p6u0kvnsdsum4n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.plantopia"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
