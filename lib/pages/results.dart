@@ -29,13 +29,13 @@ class _ResultsState extends State<Results> {
     setState(() {
       _isLoading = true;
     });
-
+    _response = '';
     try {
       final file = File(_image!.path);
       final gemini = Gemini.instance;
       gemini.textAndImage(
         text:
-        "your task is to identify plant health issues with precision. Analyze any image of a plant or leaf I provide, and detect all abnormal conditions, whether they are diseases, pests, deficiencies, or decay. Respond strictly with the name of the condition identified, and nothing else—no explanations, no additional text. If a condition is unrecognizable, reply with 'I don't know'. If the image is not plant-related, say 'Please pick another image'.",
+        "your task is to identify plant health issues with precision. Analyze any image of a plant or leaf I provide, and detect all abnormal conditions, whether they are diseases, pests, deficiencies, or decay. Respond strictly with the name of the condition identified, and nothing else—no explanations, no additional text. If a condition is unrecognizable, reply with 'Your plant looks healthy'. If the image is not plant-related, say 'Please pick another image'.",
         images: [file.readAsBytesSync()],
       ).then((value) {
         setState(() {
