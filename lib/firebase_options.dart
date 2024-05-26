@@ -41,7 +41,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAEPG-8TRO2bMSDEYnVWI58IA2yFS1YJkI',
+    apiKey: '', // my api key
     appId: '1:41520065615:web:70532b865b8fe124face3a',
     messagingSenderId: '41520065615',
     projectId: 'plantopia-acced',
@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBKLsXYG34vgXc4fcMe1Sa6dK4im0_D5ZM',
+    apiKey: '', // my api key
     appId: '1:41520065615:android:7063a9b9c5b5a85dface3a',
     messagingSenderId: '41520065615',
     projectId: 'plantopia-acced',
@@ -59,7 +59,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBDMWe_AuC1iSLbIaAsEwUlwhS6C88HTOY',
+    apiKey: '', // my api key
     appId: '1:41520065615:ios:94713bdee6e6aaebface3a',
     messagingSenderId: '41520065615',
     projectId: 'plantopia-acced',
@@ -68,7 +68,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBDMWe_AuC1iSLbIaAsEwUlwhS6C88HTOY',
+    apiKey: '', // my api key
     appId: '1:41520065615:ios:94713bdee6e6aaebface3a',
     messagingSenderId: '41520065615',
     projectId: 'plantopia-acced',
@@ -77,7 +77,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAEPG-8TRO2bMSDEYnVWI58IA2yFS1YJkI',
+    apiKey: '', // my api key
     appId: '1:41520065615:web:3666e11224d62136face3a',
     messagingSenderId: '41520065615',
     projectId: 'plantopia-acced',
