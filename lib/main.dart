@@ -22,7 +22,7 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 
 
 void main ()async{
-  Gemini.init(apiKey: 'AIzaSyD7hATYcZDC18hhQYGlBGJt1gYN32Sn8EE');
+  Gemini.init(apiKey: ''); // my api key
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
