@@ -28,20 +28,33 @@ class Login extends StatelessWidget {
     }
   }
 
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+   Future<void> signInWithGoogle(BuildContext context) async {
+    try {
+      // Trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
 
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+      // Sign in with the credential
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+
+      // Navigate to the home page if the sign-in is successful
+      if (userCredential.user != null) {
+        Navigator.push(context, SlidePageRoute(page: Home()));
+      }
+    } catch (e) {
+      print('Error signing in with Google: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error signing in with Google: $e')),
+      );
+    }
   }
 
   Future<void> resetPassword(BuildContext context) async {
@@ -147,7 +160,7 @@ class Login extends StatelessWidget {
                               icon: Icon(FontAwesomeIcons.google,
                                   color: Colors.red, size: 33),
                               onPressed: () {
-                                signInWithGoogle();
+                                signInWithGoogle(context);
                               },
                             ),
                             SizedBox(width: 10),
