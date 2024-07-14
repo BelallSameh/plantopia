@@ -15,7 +15,8 @@ With Plantopia, you can simply snap a picture of any plant, and the app will pro
 - Personalized Care Tips: Get tailored advice to ensure your plants stay healthy and vibrant. 🌞🌻
 
 - Real-Time Monitoring: Utilize sensors that send real-time data through Firebase for accurate and up-to-date plant care information. 🌡️📊
-Authentication: Secure and personalized access with Firebase authentication. 🔒🛡️
+  
+- Authentication: Secure and personalized access with Firebase authentication. 🔒🛡️
 
 # 🌱 **Why Plantopia?**
 
