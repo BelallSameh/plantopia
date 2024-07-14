@@ -8,7 +8,7 @@ With Plantopia, you can simply snap a picture of any plant, and the app will pro
 
 ## 🌟 Key Features
 
-Instant Plant Identification: Just take a photo and get detailed information about the plant species. 📷🌸
+- **Instant Plant Identification: Just take a photo and get detailed information about the plant species. 📷🌸
 
 Health Status Check: Receive real-time updates on the health condition of your plants. 🌱💚
 
