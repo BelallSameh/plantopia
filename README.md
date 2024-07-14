@@ -19,5 +19,5 @@ Authentication: Secure and personalized access with Firebase authentication. �
 
 # 🌱 **Why Plantopia?**
 
-- Plantopia combines cutting-edge technology with a user-friendly interface to make plant care easy and accessible for everyone. Whether you're dealing with common houseplants or exotic species, - Plantopia is here to help you every step of the way. 🌺🌿
+Plantopia combines cutting-edge technology with a user-friendly interface to make plant care easy and accessible for everyone. Whether you're dealing with common houseplants or exotic species, Plantopia is here to help you every step of the way. 🌺🌿
 
