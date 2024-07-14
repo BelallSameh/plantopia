@@ -4,7 +4,7 @@ Plantopia is an innovative mobile application designed to revolutionize the way 
 
 ## 📸 Snap and Identify
 
-With Plantopia, you can simply snap a picture of any plant, and the app will provide you with instant information about the plant's species and its current health status. 🌿
+With Plantopia, you can simply snap a picture of any plant, and the app will provide you with instant information about the plant's disease and its current health status. 🌿
 
 ## 🌟 Key Features
 
