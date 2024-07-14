@@ -1,4 +1,4 @@
-# 🌿 ** Plantopia - Your Ultimate Plant Care Companion ** 🌿
+# 🌿  **Plantopia - Your Ultimate Plant Care Companion** 🌿
 
 Plantopia is an innovative mobile application designed to revolutionize the way you care for your plants. Whether you're a seasoned plant enthusiast or just starting your green journey, Plantopia is your go-to tool for nurturing healthy and thriving plants. 🌱
 
