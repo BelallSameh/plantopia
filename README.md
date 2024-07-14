@@ -17,7 +17,7 @@ Personalized Care Tips: Get tailored advice to ensure your plants stay healthy a
 Real-Time Monitoring: Utilize sensors that send real-time data through Firebase for accurate and up-to-date plant care information. 🌡️📊
 Authentication: Secure and personalized access with Firebase authentication. 🔒🛡️
 
-# 🌱 ** Why Plantopia?**
+# 🌱 **Why Plantopia?**
 
 Plantopia combines cutting-edge technology with a user-friendly interface to make plant care easy and accessible for everyone. Whether you're dealing with common houseplants or exotic species, Plantopia is here to help you every step of the way. 🌺🌿
 
